@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hello {
+            border: 1px solid black;
+            padding: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        #flag {
+            display: block;
+            margin-top: 15px;
+            width: 150px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .box {
+            border: 1px solid #777;
+            max-width: 500px;
+            margin-bottom: 15px;
+            background-color: #f0f0f0;
+        }
+
+        .boxheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+        }
+
+        .boxheader h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .boxcontent {
+            background-color: #ffffff;
+            border-top: 1px solid #ccc;
+            padding: 15px;
+            display: none;
+        }
+
+        .boxcontent p {
+            margin: 0 0 15px 0;
+            color: #888;
+            line-height: 1.4;
+            font-size: 15px;
+        }
+
+        .toggle-btn {
+            color: purple;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="hello">Hello World</span><br>
+
+    <select id="country">
+        <option value="">--Select a Country--</option>
+        <option value="Jordan">Jordan</option>
+        <option value="UK">UK</option>
+        <option value="Germany">Germany</option>
+        <option value="USA">USA</option>
+    </select>
+
+    <br>
+    <img src="" alt="" id="flag" style="display: none;">
+    <br>
+
+    <label for="pass">Enter Password:</label>
+    <input type="password" id="pass" name="pass">
+    <p id="error" class="error"></p>
+
+    <label for="pass2">Repeat Password:</label>
+    <input type="password" id="pass2" name="pass2"><br>
+    <p id="error2" class="error"></p>
+
+    <div class="box">
+        <div class="boxheader">
+            <h2>What is lorem ipsum?</h2>
+            <span class="toggle-btn show-link" onclick="toggle(this, true)">Show</span>
+        </div>
+        <div class="boxcontent">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+            <span class="toggle-btn hide-link" onclick="toggle(this, false)">Hide</span>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="boxheader">
+            <h2>Why do we use it?</h2>
+            <span class="toggle-btn show-link" onclick="toggle(this, true)">Show</span>
+        </div>
+        <div class="boxcontent">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+            <span class="toggle-btn hide-link" onclick="toggle(this, false)">Hide</span>
+        </div>
+    </div>
+    <div class="box">
+        <div class="boxheader">
+            <h2>Where does it come from?</h2>
+            <span class="toggle-btn show-link" onclick="toggle(this, true)">Show</span>
+        </div>
+        <div class="boxcontent">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+            <span class="toggle-btn hide-link" onclick="toggle(this, false)">Hide</span>
+        </div>
+    </div>
+
+
+    <script>
+        let hello = document.querySelector(".hello");
+        hello.onmouseover = function () {
+            hello.style.backgroundColor = "yellow";
+            hello.style.fontWeight = "bold";
+        }
+        hello.onmouseout = function () {
+            hello.style.backgroundColor = "white";
+            hello.style.fontWeight = "normal";
+        }
+
+        let country = document.getElementById("country");
+        let flag = document.getElementById("flag");
+
+        country.onchange = function () {
+            if (this.value === "") {
+                flag.style.display = "none";
+                return;
+            }
+
+            flag.style.display = "block";
+
+            switch (this.value) {
+                case "Jordan":
+                    flag.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_Jordan.svg/250px-Flag_of_Jordan.svg.png";
+                    flag.alt = "Jordan Flag";
+                    break;
+                case "UK":
+                    flag.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/250px-Flag_of_the_United_Kingdom_%281-2%29.svg.png";
+                    flag.alt = "UK Flag";
+                    break;
+                case "Germany":
+                    flag.src = "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/250px-Flag_of_Germany.svg.png";
+                    flag.alt = "Germany Flag";
+                    break;
+                case "USA":
+                    flag.src = "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/250px-Flag_of_the_United_States.svg.png";
+                    flag.alt = "USA Flag";
+                    break;
+                default:
+                    flag.style.display = "none";
+            }
+        }
+
+        let pass = document.getElementById("pass");
+        let pass2 = document.getElementById("pass2");
+        let error = document.getElementById("error");
+        let error2 = document.getElementById("error2");
+        pass.oninput = function () {
+            if (this.value.length < 6) {
+                error.innerHTML = "Password too short (must be at least 6 characters)";
+            } else {
+                error.innerHTML = "";
+            }
+        }
+        pass2.oninput = function () {
+            if (pass2.value !== pass.value) {
+                error2.innerHTML = "Passwords don't match";
+            } else {
+                error2.innerHTML = "";
+            }
+        }
+
+        function toggle(element, shouldShow) {
+            let parentItem = element.closest('.box');
+
+            let contentBox = parentItem.querySelector('.boxcontent');
+            let showLink = parentItem.querySelector('.show-link');
+
+            if (shouldShow) {
+                contentBox.style.display = "block";
+                showLink.style.display = "none";
+            } else {
+                contentBox.style.display = "none";
+                showLink.style.display = "inline";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
