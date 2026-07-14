@@ -65,6 +65,42 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+        #styling {
+            margin-bottom: 15px;
+        }
+
+        #text {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        @keyframes colorFluctuate {
+            0% {
+                background-color: rgb(94, 94, 104);
+            }
+
+            50% {
+                background-color: rgb(62, 62, 121);
+            }
+
+            100% {
+                background-color: blue;
+            }
+        }
+
+        #bluebox {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin: 10px;
+            border: 1px solid black;
+            --box-speed: 4s;
+            animation: colorFluctuate var(--box-speed, 3s) infinite alternate ease-in-out;
+        }
     </style>
 </head>
 
@@ -135,86 +171,37 @@
         </div>
     </div>
 
+    <div id="task5">
+        <div id="styling">
+            <select id="fontfamily">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Verdana">Verdana</option>
+            </select>
 
-    <script>
-        let hello = document.querySelector(".hello");
-        hello.onmouseover = function () {
-            hello.style.backgroundColor = "yellow";
-            hello.style.fontWeight = "bold";
-        }
-        hello.onmouseout = function () {
-            hello.style.backgroundColor = "white";
-            hello.style.fontWeight = "normal";
-        }
+            <select id="fontsize">
+                <option value="12">12px</option>
+                <option value="14" selected>14px</option>
+                <option value="16">16px</option>
+                <option value="18">18px</option>
+                <option value="20">20px</option>
+            </select>
 
-        let country = document.getElementById("country");
-        let flag = document.getElementById("flag");
+            <input type="checkbox" id="italic">
+            <label for="italic">Italic</label>
 
-        country.onchange = function () {
-            if (this.value === "") {
-                flag.style.display = "none";
-                return;
-            }
+            <input type="checkbox" id="bold">
+            <label for="bold">Bold</label>
 
-            flag.style.display = "block";
-
-            switch (this.value) {
-                case "Jordan":
-                    flag.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_Jordan.svg/250px-Flag_of_Jordan.svg.png";
-                    flag.alt = "Jordan Flag";
-                    break;
-                case "UK":
-                    flag.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/250px-Flag_of_the_United_Kingdom_%281-2%29.svg.png";
-                    flag.alt = "UK Flag";
-                    break;
-                case "Germany":
-                    flag.src = "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/250px-Flag_of_Germany.svg.png";
-                    flag.alt = "Germany Flag";
-                    break;
-                case "USA":
-                    flag.src = "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/250px-Flag_of_the_United_States.svg.png";
-                    flag.alt = "USA Flag";
-                    break;
-                default:
-                    flag.style.display = "none";
-            }
-        }
-
-        let pass = document.getElementById("pass");
-        let pass2 = document.getElementById("pass2");
-        let error = document.getElementById("error");
-        let error2 = document.getElementById("error2");
-        pass.oninput = function () {
-            if (this.value.length < 6) {
-                error.innerHTML = "Password too short (must be at least 6 characters)";
-            } else {
-                error.innerHTML = "";
-            }
-        }
-        pass2.oninput = function () {
-            if (pass2.value !== pass.value) {
-                error2.innerHTML = "Passwords don't match";
-            } else {
-                error2.innerHTML = "";
-            }
-        }
-
-        function toggle(element, shouldShow) {
-            let parentItem = element.closest('.box');
-
-            let contentBox = parentItem.querySelector('.boxcontent');
-            let showLink = parentItem.querySelector('.show-link');
-
-            if (shouldShow) {
-                contentBox.style.display = "block";
-                showLink.style.display = "none";
-            } else {
-                contentBox.style.display = "none";
-                showLink.style.display = "inline";
-            }
-        }
-
-    </script>
+            <input type="checkbox" id="underline">
+            <label for="underline">Underline</label>
+        </div>
+        <input type="text" id="text">
+    </div>
+    <div id="bluebox"></div>
+    <script src="dom.js"></script>
 </body>
 
 </html>
